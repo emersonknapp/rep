@@ -43,19 +43,19 @@ We define three main entry points for ROS users.
 Variants
 --------
 
-ROS Minimal
+ROS C++ Core
 '''''''''''
 
-The `ros_minimal` variant is a highly restricted set of ROS2 functionality.
+The `ros_cpp_core` variant is a restricted subset of `ros_core` functionality.
 It targets resource- and tool-constrained environments where package managers may be limited or unavailable.
 The intention is that this variant can target cross-compiling for custom OS sysroots that may not have build tools or Python available that run on the target platform.
 It may not contain any GUI or Python dependencies.
-It may not have any dependencies outside a source workspace of its members with an exception of ubiquitous Linux libraries.
-Note that this variant explicitly does not include an implementation of either RMW or rcl_logging, users will need to choose their own that handle the dependencies that come with them.
+It may not have any dependencies outside a source workspace of its members.
+Note that this variant chooses an RMW and rcl_logging implementation based on their minimal dependency footprint.
 
 ::
 
- - ros_minimal:
+ - ros_cpp_core:
       packages: [ament_cmake, ament_cmake_ros, ament_index,
 		 class_loader, common_interfaces, console_bridge,
                  libyaml_vendor, poco_vendor, rcl, rcl_interfaces,
